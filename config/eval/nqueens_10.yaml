@@ -1,0 +1,7 @@
+# N-Queens 10x10 on GRAM's split (see nqueens_8.yaml).
+protocol: gram
+task: nq
+data_path: data/nqueens-10
+samples: 20
+batch: 1024
+tau: 0.2

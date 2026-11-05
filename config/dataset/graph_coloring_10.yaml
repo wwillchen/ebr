@@ -1,0 +1,4 @@
+# Graph Coloring N=10: python -m dataset.build_graph_coloring_dataset --nodes 10
+name: GraphColoring-10
+data_path: data/graph-coloring-10
+evaluators: []

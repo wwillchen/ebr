@@ -1,0 +1,32 @@
+# Training settings shared by every recipe in config/train/.
+
+defaults:
+  - arch: ebr
+  - _self_
+
+hydra:
+  output_subdir: null
+  run:
+    dir: .
+
+seed: 0
+lr: 1.0e-4
+lr_warmup_steps: 100
+beta1: 0.9
+beta2: 0.95
+weight_decay: 0.1
+ema_rate: 0.999
+grad_clip_relative: null  # off; k > 1 clips at k x the running average gradient norm (utils/optim.py)
+grad_clip_adaptive: null  # off; z > 0 clips at median + z spreads of the recent log gradient norms (utils/optim.py)
+lr_cooldown_steps: null   # off; N decays the LR linearly to 0 over the last N steps
+muon_split_fused: false   # Muon orthogonalizes fused q/k/v and gate/up blocks separately
+attention_self_test: before_training  # first_step: run it in step 1, reseeding the RNG with the run's seed (one GPU)
+checkpoint_interval_steps: 5000
+
+load_checkpoint: null
+wandb_mode: offline
+project_name: EBR
+run_name: null
+
+dataset:
+  vectorized_sampler: false

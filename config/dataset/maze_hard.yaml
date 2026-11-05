@@ -1,0 +1,5 @@
+# sapientinc/maze-30x30-hard-1k. Any shortest path is a valid answer (maze_path evaluator).
+name: Maze-30x30-hard-1k
+data_path: data/maze-30x30-hard-1k
+evaluators:
+  - name: maze_path@MazePath

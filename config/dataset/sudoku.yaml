@@ -1,0 +1,4 @@
+# Sudoku-Extreme 1k x 1000 aug: python -m dataset.build_sudoku_dataset
+name: Sudoku-1k
+data_path: data/sudoku-extreme-1k-aug-1000
+evaluators: []

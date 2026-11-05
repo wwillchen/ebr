@@ -1,0 +1,9 @@
+# Maze-Hard protocol: 1000 test mazes x 5 samples, 16 segments, eval noise = the checkpoint's training noise.
+protocol: maze
+data_path: data/maze-30x30-hard-1k
+n: 5
+depth: 16
+batch: 1000
+grad_chunk: 2500
+draw_seed: auto      # auto = the checkpoint's training seed
+flat_noise: auto

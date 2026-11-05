@@ -1,0 +1,4 @@
+# N-Queens 8 on GRAM's split: python -m dataset.build_nqueens_dataset --n 8
+name: NQueens-8
+data_path: data/nqueens-8
+evaluators: []

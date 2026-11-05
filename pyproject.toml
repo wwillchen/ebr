@@ -1,0 +1,17 @@
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E9", "F", "B", "UP", "I"]
+ignore = [
+    "B905",  # zip() without strict=: lengths are equal by construction
+]
+
+[tool.ruff.lint.per-file-ignores]
+# torch.library custom ops: torch 2.6 infers their schema from the runtime type hints (Optional[Tensor], not X | None).
+"models/fused_attn/ops.py" = ["UP"]
+"models/fused_attn/rope_split.py" = ["UP"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["dataset", "evaluators", "models", "utils"]

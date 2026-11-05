@@ -1,0 +1,48 @@
+# EBR model and descent, shared by every benchmark (per-task values are in config/train/<task>.yaml).
+loss:
+  convergence_loss_weight: 0.5  # lambda: weight of the convergence loss (BCE of the convergence score vs correctness)
+
+# Energy network
+num_layers: 2
+hidden_size: 256
+num_heads: 4
+expansion: 4
+forward_dtype: bfloat16
+energy_cell_activation: linear
+attn_backend: math
+attn_nograd_backend: sdpa_auto
+
+# Segments and convergence halting (no learned halt head). A row halts when its residual r, the mean relative move
+# ||z_t - z_{t-1}|| / ||z_{t-1}|| over the last convergence_window (H) steps, falls below convergence_threshold
+# (delta); convergence_temperature (kappa) sets the sharpness of the convergence score sigmoid((delta - r) / kappa).
+cycles: 21
+grad_cycles: 7
+randomize_min_cycles: 15
+reset_cycles_low: 7
+reset_cycles_high: 15
+halt_max_steps: 4
+halt_exploration_prob: 0.1
+convergence_threshold: 0.25
+convergence_temperature: 0.05
+convergence_window: 2
+
+# Descent
+step_size: 250.0
+step_size_low: 200.0
+step_size_high: 250.0
+init_std: 1.0
+noise_scale: 0.05
+noise_cosine: true
+noise_settle_hot: 0.4
+microstep_ce: 0.5
+microstep_ce_ramp: 1.0
+
+# Forward SXM
+explore_k: 2
+
+# Speed options (see config/train/sudoku.yaml)
+energy_compile: true
+descent_wrapper_compile: false
+rope_impl: broadcast
+explore_reuse_prefix: false
+avoid_host_syncs: false

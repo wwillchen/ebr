@@ -1,0 +1,22 @@
+# @package _global_
+# Shared by the multi-solution recipes (N-Queens, Graph Coloring): every input has several valid solutions, so training
+# uses reverse SXM (grade against the nearest valid solution in the batch) and noisy solution initialization, with a
+# wider model and flat descent noise. Per-task values (board, depth, steps, convergence loss weight) are in
+# config/train/<task>.yaml.
+defaults:
+  - cfg_pretrain
+  - _self_
+
+arch:
+  hidden_size: 512
+  noise_cosine: false
+  noise_scale: 0.3
+  noisy_solution_init: true
+  late_nearest_ce_steps: 3
+  # Speed options.
+  explore_reuse_prefix: true
+  descent_wrapper_compile: true
+
+global_batch_size: 768
+train_epochs_per_iter: 500
+lr_warmup_steps: 1000

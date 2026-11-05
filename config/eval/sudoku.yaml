@@ -1,0 +1,8 @@
+# Sudoku-Extreme protocol: full test set, 8 samples, 64 segments.
+protocol: sudoku
+data_path: data/sudoku-extreme-1k-aug-1000
+breadth: 8
+depth: 64
+batch: 4096
+shard: 0
+num_shards: 16

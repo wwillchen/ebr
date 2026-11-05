@@ -1,0 +1,8 @@
+# N-Queens 8x8 on GRAM's split: 20 samples per unique input, stop at |grad_M E| < tau, scored by evaluators/gram.py
+# (Cov@20 pooled and capped at 20 per input, the same rule as Graph Coloring).
+protocol: gram
+task: nq
+data_path: data/nqueens-8
+samples: 20
+batch: 1024
+tau: 0.2

@@ -1,0 +1,18 @@
+# @package _global_
+# N-Queens 10x10 (45k steps). Convergence loss weight 0.5 (config/arch/ebr.yaml).
+defaults:
+  - /multi_solution
+  - /dataset@dataset: nqueens_10
+  - _self_
+
+arch:
+  board_height: 10
+  board_width: 10
+  halt_max_steps: 3
+  explore_rank_max_completions: 128
+
+eval_batch_size: 2638
+epochs: 40000
+max_steps: 45000
+eval_interval_steps: 5000
+eval_rng: coupled

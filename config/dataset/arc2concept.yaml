@@ -1,0 +1,4 @@
+# ARC-AGI-2 + ConceptARC: bash scripts/download_arc.sh && bash scripts/build_arc.sh. ARC training release: soon.
+name: ARC2-concept-aug-1000
+data_path: data/arc2concept-aug-1000
+evaluators: []

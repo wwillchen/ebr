@@ -1,0 +1,17 @@
+# @package _global_
+# Sudoku-Extreme (60k steps): train/sudoku_paper with the speed options on (fused Triton attention and RoPE, compiled
+# descent wrapper).
+defaults:
+  - sudoku_paper
+  - _self_
+
+arch:
+  attn_backend: fused
+  attn_nograd_backend: fused
+  rope_impl: fused
+  descent_wrapper_compile: true
+  explore_reuse_prefix: true
+  avoid_host_syncs: true
+
+dataset:
+  vectorized_sampler: true

@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+outputs/
+checkpoints/
+wandb/
+data/
+kaggle/
+*.pth
+*.log
+.DS_Store
+.venv*/

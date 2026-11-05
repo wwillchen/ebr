@@ -1,0 +1,23 @@
+# @package _global_
+# Maze-Hard 30x30 (50k steps).
+defaults:
+  - /cfg_pretrain
+  - /dataset@dataset: maze_hard
+  - _self_
+
+arch:
+  board_height: 30
+  board_width: 30
+  halt_max_steps: 6
+  explore_k: 1
+  energy_cell_activation: softplus
+  training_noise_scale: 0.4
+  convergence_threshold: 0.75
+
+global_batch_size: 64
+eval_batch_size: 128
+epochs: 60000  # sets the sampler's shuffle schedule; training stops at max_steps
+max_steps: 50000
+train_epochs_per_iter: 2500
+eval_interval_steps: 2500
+lr_warmup_steps: 500

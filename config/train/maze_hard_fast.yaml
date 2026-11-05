@@ -1,0 +1,22 @@
+# @package _global_
+# Maze-Hard with the speed options on, as train/sudoku: fused Triton attention for every microstep, plus adaptive
+# gradient clipping. Otherwise the recipe of train/maze_hard.
+defaults:
+  - maze_hard
+  - _self_
+
+# Clips the global gradient norm at median + 4 lower-half spreads of the last 200 log norms (utils.optim
+# .AdaptiveGradClip).
+grad_clip_adaptive: 4
+# The attention self-test runs in step 1 and reseeds the RNG with the run's seed there.
+attention_self_test: first_step
+
+arch:
+  attn_backend: fused
+  attn_nograd_backend: fused
+  rope_impl: fused
+  descent_wrapper_compile: true
+  avoid_host_syncs: true
+
+dataset:
+  vectorized_sampler: true

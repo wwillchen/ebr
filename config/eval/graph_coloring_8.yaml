@@ -1,0 +1,7 @@
+# Graph Coloring, 8 vertices, on GRAM's split (see nqueens_8.yaml).
+protocol: gram
+task: gc
+data_path: data/graph-coloring-8
+samples: 20
+batch: 1280
+tau: 0.2

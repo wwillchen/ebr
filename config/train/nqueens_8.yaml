@@ -1,0 +1,20 @@
+# @package _global_
+# N-Queens 8x8 (30k steps).
+defaults:
+  - /multi_solution
+  - /dataset@dataset: nqueens_8
+  - _self_
+
+arch:
+  board_height: 8
+  board_width: 8
+  halt_max_steps: 3
+  explore_rank_max_completions: 64
+  loss:
+    convergence_loss_weight: 0.25
+
+eval_batch_size: 1280
+epochs: 30000
+max_steps: 30000
+eval_interval_steps: 5000
+eval_rng: coupled

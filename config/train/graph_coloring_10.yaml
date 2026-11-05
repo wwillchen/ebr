@@ -1,0 +1,19 @@
+# @package _global_
+# Graph Coloring, 10 vertices (70k steps). The board is the 45 upper-triangle edge slots.
+defaults:
+  - /multi_solution
+  - /dataset@dataset: graph_coloring_10
+  - _self_
+
+arch:
+  board_height: 1
+  board_width: 45
+  explore_rank_max_completions: 160
+  loss:
+    convergence_loss_weight: 0.25
+
+eval_batch_size: 1280
+epochs: 30000
+max_steps: 70000
+eval_interval_steps: 500
+eval_rng: coupled

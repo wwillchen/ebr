@@ -1,0 +1,21 @@
+# @package _global_
+# Sudoku-Extreme (60k steps), without the speed options of train/sudoku.
+defaults:
+  - /cfg_pretrain
+  - /dataset@dataset: sudoku
+  - _self_
+
+arch:
+  board_height: 9
+  board_width: 9
+  loss:
+    convergence_loss_weight: 0.75
+
+global_batch_size: 768
+eval_batch_size: 8000
+epochs: 60000
+max_steps: 60000
+train_epochs_per_iter: 2500
+eval_interval_steps: 5000
+eval_rng: coupled
+lr_warmup_steps: 100

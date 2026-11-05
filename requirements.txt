@@ -1,0 +1,11 @@
+torch>=2.6
+numpy
+pydantic>=2
+omegaconf
+hydra-core>=1.3
+tqdm
+argdantic
+huggingface_hub
+# optional
+wandb
+triton; platform_system == "Linux"  # CUDA only: fused second-order attention backend (attn_backend=fused)
