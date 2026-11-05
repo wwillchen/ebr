@@ -489,9 +489,10 @@ def _train_loop(run: Run, stop: StopSignal, rng_fix: Any) -> str | None:
     state.model.train()
     stop_reason = stop.stop_reason(run.device, run.world)
     while state.step < state.total_steps and stop_reason is None:
-        for i, (_set_name, batch, global_batch_size) in enumerate(run.train_loader):
-            if i == 0 and rng_fix is not None:
-                restore_rng(rng_fix)
+        batches = iter(run.train_loader)
+        if rng_fix is not None:
+            restore_rng(rng_fix)
+        for _set_name, batch, global_batch_size in batches:
             metrics = train_batch(config, state, batch, global_batch_size)
             if metrics is None:
                 break
@@ -504,6 +505,8 @@ def _train_loop(run: Run, stop: StopSignal, rng_fix: Any) -> str | None:
             eval_due = config.eval_interval_steps and state.step % config.eval_interval_steps == 0
             if eval_due and stop_reason is None and run.eval_set is not None:
                 run.run_eval()
+                if last_checkpoint_step == state.step and config.eval_rng == "coupled":
+                    run.checkpoint()  # the eval drew from the training RNG after the save
             if state.step >= state.total_steps or stop_reason is not None:
                 break
         rng_fix = None

@@ -171,6 +171,7 @@ class PuzzleDataset(IterableDataset):
     def _iter_train(self):
         """One training pass: ``epochs_per_iter`` epochs over every set, resuming from ``_train_state`` if set."""
         set_names = list(self._data.keys())
+        yielded = self._train_state is not None  # a resumed pass may have no batch left
         if self._train_state is None:
             self._train_state = {
                 "set_names": set_names,
@@ -237,10 +238,13 @@ class PuzzleDataset(IterableDataset):
                         "puzzle_identifiers": data["puzzle_identifiers"][row_puzzles[local]],
                     }
                     yield set_name, self._collate(batch), row_puzzles.size
+                    yielded = True
                 group_order = np.empty((0,), dtype=np.int64)
             state.update(group_order=None, start_index=0, rng_state=None, epoch_idx=0)
             state["set_idx"] += 1
         self._train_state = None
+        if not yielded:
+            raise ValueError(f"global_batch_size={self.config.global_batch_size} is larger than one epoch")
 
     def __iter__(self):
         self._lazy_load()
