@@ -1,11 +1,13 @@
 # Energy-Based Reasoners (EBR)
 
+[Paper (arXiv)](https://arxiv.org/abs/2611.08977) | [Project page](https://energy-based-reasoners.github.io/)
+
 > The repo is still under construction as we figure out ways to make energy-based training and eval faster as well as
 > prepare ARC-AGI results. **ARC-AGI:** the dataset download and build scripts are included. ARC training configs and
 > checkpoints will be released soon.
 
-This is the official codebase for the paper "Energy-Based Reasoners: Your Recurrent Reasoner Should be an Energy-Based
-Model".
+This is the official codebase for the paper ["Energy-Based Reasoners: Your Recurrent Reasoner Should be an
+Energy-Based Model"](https://arxiv.org/abs/2611.08977).
 
 EBR learns a scalar energy `E(z; x)` over a latent state `z` and reasons by gradient descent on it. EBR unifies evaluation, refinement and verification under one function.
 During training, state-based explorative modeling (SXM) explores several latent trajectories and supervises the one with the best match. Forward
@@ -132,6 +134,7 @@ utils/         config schema, optimizer, checkpointing, seeding and distributed 
 @article{ebr2026,
   title={Energy-Based Reasoners: Your Recurrent Reasoner Should be an Energy-Based Model},
   author={William Xingxu Chen and Alexi Gladstone and Zeyu Michael Li and Heng Ji and Yilun Du},
+  journal={arXiv preprint arXiv:2611.08977},
   year={2026}
 }
 ```
