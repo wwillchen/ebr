@@ -131,9 +131,9 @@ utils/         config schema, optimizer, checkpointing, seeding and distributed 
 ## Citation
 
 ```bibtex
-@article{ebr2026,
-  title={Energy-Based Reasoners: Your Recurrent Reasoner Should be an Energy-Based Model},
-  author={William Xingxu Chen and Alexi Gladstone and Zeyu Michael Li and Heng Ji and Yilun Du},
+@article{chen2026energy,
+  title={Energy-Based Reasoners: Your Recurrent Reasoner Should Be an Energy-Based Model},
+  author={Chen, William Xingxu and Gladstone, Alexi and Li, Zeyu Michael and Ji, Heng and Du, Yilun},
   journal={arXiv preprint arXiv:2611.08977},
   year={2026}
 }
